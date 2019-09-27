@@ -9,9 +9,9 @@ def Classify(filename):
     temp = 0
     image_file = tf.gfile.FastGFile(filename, 'rb')
     data = image_file.read()
-    classes = [line.rstrip() for line in tf.gfile.GFile("hot_dog_labels.txt")]
+    classes = [line.rstrip() for line in tf.gfile.GFile("labels.txt")]
 
-    with tf.gfile.FastGFile("hot_dog_graph.pb", 'rb') as inception_graph:
+    with tf.gfile.FastGFile("graph.pb", 'rb') as inception_graph:
         definition = tf.GraphDef()
         definition.ParseFromString(inception_graph.read())
         _ = tf.import_graph_def(definition, name='')
@@ -22,11 +22,11 @@ def Classify(filename):
         
         top_results = result[0].argsort()[-len(result[0]):][::-1] 
         for type in top_results:
-            hot_dog_or_not = classes[type]
+            res = classes[type]
             score = result[0][type]
             if(score > 0.75):
                 temp = score
-                temp2 = hot_dog_or_not
+                temp2 = res
 
         if temp > 0.75:
             print('################')
