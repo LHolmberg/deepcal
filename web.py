@@ -40,9 +40,7 @@ def Classify(filename):
             print("unknown")
             print('\n')
             print('################')
-
-
-app = Flask(__name__)
+    redirect("/b")
 
 UPLOAD_FOLDER = 'pics/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -56,6 +54,14 @@ def printfile(file):
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route("/a")
+def redirect_to_b():
+    return redirect("/b")
+
+@app.route("/b")
+def handle_b():
+    pass
 
 @app.route('/classify', methods=['GET', 'POST'])
 def upload_file():
