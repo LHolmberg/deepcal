@@ -40,7 +40,7 @@ def Classify(filename):
             print("unknown")
             print('\n')
             print('################')
-    redirect("/b")
+
 
 UPLOAD_FOLDER = 'pics/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
