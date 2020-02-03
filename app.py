@@ -7,8 +7,8 @@ import json
 import requests
 
 #For the food database api
-APPID = "f1b23fbd"
-API_KEY = "7b05c0f405e06d6d6f3af6938505daab"
+APPID = ""
+API_KEY = ""
 
 class Data:
     def __init__(self):
